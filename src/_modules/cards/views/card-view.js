@@ -12,22 +12,28 @@ module.exports = Marionette.ItemView.extend({
   className: 'card',
 
   ui: {
+    'door': '.door'
   },
 
   events:{
     'click' : 'onClick'
   },
 
-  initialise: function(options){
-      this.currentDay = options.currentDay;
+  onRender: function(){
+    var date = new Date();
+    var day =  5;//date.getDate();
+    var modelDay = parseInt(this.model.get('day'));
+
+    if( day === modelDay) {
+      this.$el.addClass('current');
+    }    
+    if(modelDay < day ) {
+      this.ui.door.addClass("open");
+    }
   },
 
-  onRender: function(options){
-    if( this.currentDay !== this.model.get('day') && this.model.get('day') < this.currentDay ) {
-      console.log('today is open', this.model.get('day'))
-    }
+  onClick: function(){
+    this.ui.door.toggleClass("open");
   }
-
-
 
 });

@@ -26,12 +26,10 @@ module.exports = Marionette.Object.extend({
 
   startCards: function() {
     var date = new Date();
-    var day = date.getDate();
     var month = date.getMonth() + 1;
 
     if(month === 12) {
       this.cards = new Cards({
-        currentDay: day,
         container: this.mainLayout.getRegion('main'),
         collection: this.calendarCollection
       });
