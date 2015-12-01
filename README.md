@@ -1,4 +1,4 @@
-# MStudio architecture.
+# Backbone Advent calendar.
 
 ## Basic Starter
 
