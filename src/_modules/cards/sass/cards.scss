@@ -64,7 +64,7 @@
       transform-style: preserve-3d;
       &.open {
         background-color:#ccc;
-        box-shadow: 14px 0px 15px -1px rgba(0,0,0,0.2);
+        //box-shadow: 14px 0px 15px -1px rgba(0,0,0,0.2);
         color:black;
         transform: rotate3d(0, 1, 0, -98deg);
       }
@@ -101,10 +101,37 @@ li.card:after {
   -webkit-transform: skew(-44deg);
      -moz-transform: skew(-44deg);
        -o-transform: skew(-44deg);
-  background:#a20b32;
+  background:#f58fa9;
   position:absolute;
   left:15px;
   top:-30px;
+
+}
+
+li.card:before {
+  content:'';
+  display:block;
+  width: 30px;
+  height: 130px;
+  -webkit-transform: skewY(-44deg);
+     -moz-transform: skewY(-44deg);
+       -o-transform: skewY(-44deg);
+
+  background:black;
+  position:absolute;
+  left:130px;
+  top:-15px;
+
+}
+
+li:last-child.card:after {
+  width:200px;
+
+}
+
+li:last-child.card:before {
+  height:275px;
+  left:200px;
 
 }
 
