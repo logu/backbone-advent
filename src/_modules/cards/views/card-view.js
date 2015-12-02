@@ -19,21 +19,32 @@ module.exports = Marionette.ItemView.extend({
     'click' : 'onClick'
   },
 
-  onRender: function(){
+  initialize: function(){
     var date = new Date();
-    var day =  5;//date.getDate();
     var modelDay = parseInt(this.model.get('day'));
+    this.currentDate =  date.getDate();
+    this.available = modelDay < this.currentDate || this.currentDate === modelDay
+  },
 
-    if( day === modelDay) {
+  onRender: function(){
+
+    if(this.currentDate === parseInt(this.model.get('day'))) {
       this.$el.addClass('current');
     }    
-    if(modelDay < day ) {
+    if(parseInt(this.model.get('day')) < this.currentDate ) {
       this.ui.door.addClass("open");
     }
   },
 
+  serializeData: function(){
+    var data = Marionette.ItemView.prototype.serializeData.apply(this, arguments);
+    data.available = this.available;
+    return data;
+  },
+
+
   onClick: function(){
-    this.ui.door.toggleClass("open");
+    this.ui.door.hasClass('available') ? this.ui.door.toggleClass("open") : '';
   }
 
 });

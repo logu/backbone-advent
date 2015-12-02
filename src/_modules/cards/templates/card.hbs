@@ -1,4 +1,5 @@
-<div class="door">{{day}}</div>
+<div class="door {{#if available}} available {{/if}}">{{day}}</div>
+{{#if available}} 
 <div class="revealed">
     {{#if image}}
         <a href="{{link}}">
@@ -7,3 +8,4 @@
     {{/if}}
     
 </div>
+ {{/if}}
